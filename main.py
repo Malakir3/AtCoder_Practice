@@ -1,11 +1,15 @@
-all_num, tgt_num = map(int, input().split())
+N, M = map(int, input().split())
+s_list = [ input()[3:] for _ in range(N)]
+t_list = [ input() for _ in range(M)]
 
-ranker_list = []
-for index, _ in enumerate(range(all_num), 1):
-    if index > tgt_num:
-        input()
-    else:
-        ranker_list.append(input())
+s_list = sorted(s_list)
+t_list = sorted(t_list)
 
-for name in sorted(ranker_list):
-    print(name)
+count = 0
+for s in s_list:
+    for t in t_list:
+        if s == t :
+            count += 1
+            break
+
+print(count)
