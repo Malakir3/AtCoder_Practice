@@ -1,14 +1,14 @@
-T = int(input())
+N = int(input())
+a_list = list(map(int, input().split()))
+Q = int(input())
 
-n_list = []
-a_list = []
-for _ in range(T):
-    n_list.append(int(input()))
-    a_list.append(list(map(int, input().split())))
+def my_query(arg_list):
+    if arg_list[0] == 1:
+        a_list[arg_list[1]-1] = arg_list[2]
+    else:
+        print(a_list[arg_list[1]-1])
 
-for test in a_list:
-    count = 0
-    for a in test:
-        if a % 2 != 0:
-            count += 1
-    print(count)            
+for _ in range(Q):
+    q = list(map(int, input().split()))
+    my_query(q)
+        
