@@ -1,13 +1,14 @@
-N = int(input())
-S = list(input())
+T = int(input())
 
-for i in range(1, N):
-    count = N-i
-    for k in range(N-i):      
-        if S[k] == S[i+k]:
-            count = k
-            break
-    
-    print(count)
+n_list = []
+a_list = []
+for _ in range(T):
+    n_list.append(int(input()))
+    a_list.append(list(map(int, input().split())))
 
-        
+for test in a_list:
+    count = 0
+    for a in test:
+        if a % 2 != 0:
+            count += 1
+    print(count)            
