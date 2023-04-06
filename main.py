@@ -1,12 +1,10 @@
-N, X = map(int, input().split())
+N = int(input())
 ls = list(map(int, input().split()))
 
 st = set(ls)
 
-ans = 'No'
-for num in st:
-    if num + X in st:
-        ans = 'Yes'
-        break
+count = 0
+for color in st:
+    count += ls.count(color) // 2
 
-print(ans)
+print(count)
