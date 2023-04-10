@@ -1,15 +1,22 @@
-from collections import defaultdict
+# C - Merge Sequences 
+N, M = map(int, input().split())
 
-N = int(input())
-ls = list(map(int, input().split()))
+ls_a = list(map(int, input().split()))
+ls_b = list(map(int, input().split()))
+ls_c = sorted(ls_a + ls_b)
 
-dic = defaultdict(int)
+dic = {}
+for index, num in enumerate(ls_c,1):
+    dic[num] = index
 
-for num in ls:
-    dic[num] += 1
+ans_a = []
+ans_b = []
 
-count = 0
-for key in dic:
-    count += dic[key] // 2
+for a in ls_a:
+    ans_a.append(dic[a])
 
-print(count)
+for b in ls_b:
+    ans_b.append(dic[b])
+
+print(" ".join([str(x) for x in ans_a]))
+print(" ".join([str(y) for y in ans_b]))
