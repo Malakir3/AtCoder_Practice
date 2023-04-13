@@ -23,12 +23,11 @@ for down_time in itertools.combinations(move_num_ls, H-1): # (0,2)等
     x = 0
     y = 0
     for time in range(H+W-2):
-        if time == down_time:
+        if time in down_time:
             y += 1
         else:
             x += 1
-        # trail_log.add(ls[y][x])
-        print(trail_log)
+        trail_log.add(ls[y][x])
     
     if len(trail_log) == H+W-1:
         count += 1
