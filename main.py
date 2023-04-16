@@ -1,37 +1,48 @@
-# C - Make Takahashi Happy
+# C - Four Variables
 
-# 3 3
-# 3 2 2
-# 2 1 3
-# 1 5 4
-# [[3, 2, 2], [2, 1, 3], [1, 5, 4]]
+n = int(input())
 
-import itertools
+# 1 <= ab <= n-1を満たすa,bの組み合わせ（約数の数）を調べる。
+# 一方が決まれば他方も決まる。
 
-H, W = map(int, input().split())
+# その後、cd = n-abを満たすc,dの組み合わせを調べる。
 
-# [[3, 2, 2], [2, 1, 3], [1, 5, 4]]
-ls = [ list(map(int, input().split())) for _ in range(H)]
+# resultに、abとcdの組み合わせ方の数を加える。
+# a != b かつ、c !=d のときは+4
+# a = b かつ、c = d のときは+1
+# 他は+2
+# dic = map()
+ls = list()
+for ab in range(1,n):
+    # count = 0
+    i = 1
+    while i**2 <= ab:
+        if ab % i == 0:
+            a = i
+            b = ab // i
+            cd = n - ab
 
-move_num_ls = [ _ for _ in range(H+W-2)] # [0,1,2,...,H+W-1]
+            j = 1
+            while j**2 <= cd:
+                if cd % j == 0:
+                    c = j
+                    d = cd // j
+                ls.append([a,b,c,d])
+                j += 1
+        i += 1
 
 count = 0
-for down_time in itertools.combinations(move_num_ls, H-1): # (0,2)等
-    trail_log = set()
-    trail_log.add(ls[0][0])
-    
-    x = 0
-    y = 0
-    for time in range(H+W-2):
-        if time in down_time:
-            y += 1
-        else:
-            x += 1
-        trail_log.add(ls[y][x])
-    
-    if len(trail_log) == H+W-1:
+for pair in ls:
+    a = pair[0]
+    b = pair[1]
+    c = pair[2]
+    d = pair[3]
+    if a != b & c != d:
+        count += 4
+    elif len(set(pair)) == 1:
         count += 1
+    else:
+        count += 2
 
-print(count)
+print(count)        
 
-    
