@@ -12,15 +12,21 @@ if a_set[0] != 0:
     sys.exit()
 
 pre_num = -1
-count = 0
-while count <= k+1:
-  for i in a_set:
-      count += 1
-      result = pre_num + 1
+for index, i in enumerate(a_set):
+    result = pre_num + 1
 
-      if i == pre_num + 1:
-          pre_num = i
-      else:
-          break
-      
-print(result)
+    if i == pre_num + 1:
+        pre_num = i
+    else:
+        break
+    
+    if index > k-1:
+        break
+
+if result == 0:
+    print(1)
+else:
+    print(result)
+# 7 3
+# 2 0 2 3 2 1 4
+# [0, 1, 2, 3, 4]
