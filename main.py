@@ -1,5 +1,5 @@
 # C - Don’t be cycle
-
+# 具体例を紙に書きだしてuniteメソッドの動作をイメージ
 from collections import defaultdict
 
 class UnionFind():
