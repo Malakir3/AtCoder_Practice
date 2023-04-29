@@ -1,6 +1,9 @@
 # C - Don’t be cycle
 from collections import defaultdict
-
+# ランクの考え方
+# ランクの等しい木同士を連結するときに限り、1が加算される
+# 各木の根に対して、木のランクを保持させる。
+# 木を連結するときには、新たな木の根となるほうのみランクを更新する。
 class UnionFind():
     # 初期化
     def __init__(self,n):
@@ -18,6 +21,8 @@ class UnionFind():
 
     # ノードの結合        
     def unite(self,x,y):
+        # ここで求めるx,yは、根のノード番号となる。（経路圧縮による効果）
+        # つまり、この処理以降ではroot[x]やroot[y]は必ず負の値になる
         x = self.find(x)
         y = self.find(y)
 
