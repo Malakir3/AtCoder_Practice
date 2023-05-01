@@ -30,7 +30,7 @@ class UnionFind():
                 self.rank[x] += 1
 
     def same(self,x,y):
-        return self.root[x] == self.root[y]
+        return self.find(x) == self.find(y)
     
 n,q = map(int, input().split())
 uf = UnionFind(n)
